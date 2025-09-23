@@ -690,10 +690,11 @@ const Hero: React.FC = () => {
     }),
   };
 
-  const name = "SANKALP R";
+  const name = "SANKALP R.";
 
   return (
     <section
+      id="home"
       className={`relative min-h-screen flex items-center justify-center overflow-hidden transition-colors duration-700 ${
         isDark ? "bg-black" : "bg-white"
       }`}
@@ -822,20 +823,6 @@ const Hero: React.FC = () => {
           </motion.div>
 
           {/* Animated location with pulse */}
-          <motion.div
-            variants={itemVariants}
-            className={`${
-              isDark ? "text-blue-400/60" : "text-blue-600/60"
-            } text-sm font-mono mb-8 tracking-widest flex items-center justify-center gap-2`}
-          >
-            <motion.div
-              animate={{ scale: [1, 1.5, 1] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className={`w-2 h-2 rounded-full ${
-                isDark ? "bg-blue-400" : "bg-blue-600"
-              }`}
-            />
-          </motion.div>
 
           {/* Animated Role Description */}
           <motion.div

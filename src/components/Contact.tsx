@@ -77,8 +77,8 @@ const Contact: React.FC = () => {
     {
       icon: Linkedin,
       title: "LinkedIn",
-      value: "abhaymallick2002",
-      href: "https://linkedin.com/in/abhaymallick2002",
+      value: "sankalp-racchewar",
+      href: "https://linkedin.com/in/sankalp-racchewar/",
       isExternal: true,
     },
   ];
