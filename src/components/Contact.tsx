@@ -63,7 +63,7 @@ const Contact: React.FC = () => {
     {
       icon: MapPin,
       title: "Location",
-      value: "Chandrapur, Maharashtra",
+      value: "Pune, Maharashtra",
       href: null,
       isExternal: false,
     },

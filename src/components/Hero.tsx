@@ -690,7 +690,7 @@ const Hero: React.FC = () => {
     }),
   };
 
-  const name = "SANKALP RACCHEWAR";
+  const name = "SANKALP R";
 
   return (
     <section
@@ -732,7 +732,7 @@ const Hero: React.FC = () => {
       {/* Light overlay for text visibility - much lighter */}
       {!isDark && <div className="absolute inset-0 z-10 bg-white/10" />}
 
-      <div className="container mx-auto px-6 z-20 relative">
+      <div className="container mx-auto px-6 py-6 z-20 relative mt-8">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -786,7 +786,7 @@ const Hero: React.FC = () => {
             onMouseEnter={() => setIsHovering(true)}
             onMouseLeave={() => setIsHovering(false)}
           >
-            <div className="flex flex-wrap justify-center items-center gap-1 md:gap-2 mb-4">
+            <div className="flex flex-wrap justify-center items-center gap-1 md:gap-2 mb-2">
               {name.split("").map((letter, index) => (
                 <motion.span
                   key={index}
@@ -859,7 +859,7 @@ const Hero: React.FC = () => {
                 isDark ? "text-gray-600" : "text-gray-400"
               }`}
             >
-              ×
+              @
             </span>
             <motion.span
               animate={{
@@ -869,7 +869,7 @@ const Hero: React.FC = () => {
               transition={{ duration: 3, repeat: Infinity, delay: 1.5 }}
               className="inline-block bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent"
             >
-              Creative Technologist
+              Chainworks
             </motion.span>
           </motion.div>
 
