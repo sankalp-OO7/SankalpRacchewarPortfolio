@@ -1,4 +1,4 @@
-import { FC, lazy, Suspense, useState, useEffect } from "react";
+import { FC, lazy, Suspense } from "react";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
@@ -13,18 +13,18 @@ const Certificates = lazy(() => import("./components/Certificates"));
 const Experience = lazy(() => import("./components/Experience"));
 
 const App: FC = () => {
-  const [isMobile, setIsMobile] = useState(false);
+  // const [isMobile, setIsMobile] = useState(false);
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768); // You can adjust this breakpoint
-    };
+  // useEffect(() => {
+  //   const handleResize = () => {
+  //     setIsMobile(window.innerWidth < 768); // You can adjust this breakpoint
+  //   };
 
-    handleResize(); // Set initial state
-    window.addEventListener("resize", handleResize);
+  //   handleResize(); // Set initial state
+  //   window.addEventListener("resize", handleResize);
 
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  //   return () => window.removeEventListener("resize", handleResize);
+  // }, []);
 
   return (
     <ThemeProvider>

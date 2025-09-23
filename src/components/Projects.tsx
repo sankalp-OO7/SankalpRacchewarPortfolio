@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  Github,
   Eye,
   Filter,
   ChevronDown,
@@ -137,7 +136,7 @@ const Projects: React.FC = () => {
     filter === "all"
       ? projects
       : projects.filter((project) => project.category === filter)
-  ).sort((a, b) => (b.featured ? 1 : -1));
+  ).sort((_, b) => (b.featured ? 1 : -1));
 
   const displayedProjects = showAll
     ? filteredProjects
