@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 
 const Skills = () => {
@@ -54,15 +53,6 @@ const Skills = () => {
     },
   };
 
-  const skillCardVariants = {
-    initial: { opacity: 0, y: 20 },
-    animate: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.4, ease: "easeOut" },
-    },
-  };
-
   return (
     <section id="skills" className="py-20 bg-white dark:bg-dark-900">
       <div className="container mx-auto px-6">
@@ -95,7 +85,14 @@ const Skills = () => {
           {skillCategories.map((category, categoryIndex) => (
             <motion.div
               key={category.title}
-              variants={skillCardVariants}
+              variants={{
+                initial: { opacity: 0, y: 20 },
+                animate: {
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 0.4, ease: "easeOut" },
+                },
+              }}
               className="skill-card bg-gray-50 dark:bg-dark-800 p-6 md:p-8 rounded-2xl shadow-lg border border-gray-100 dark:border-dark-700 w-full max-w-xs"
             >
               <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6 text-center pb-4 border-b border-gray-200 dark:border-dark-600">
