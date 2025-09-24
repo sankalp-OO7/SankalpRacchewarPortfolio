@@ -4,6 +4,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Base Styles */
 * {
   margin: 0;
   padding: 0;
@@ -37,7 +38,7 @@ body {
   @apply bg-gray-500 dark:bg-dark-500;
 }
 
-/* Smooth transitions for theme switching */
+/* Smooth transitions for theme switching - Default for all devices */
 * {
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
@@ -156,10 +157,10 @@ body {
 
 /* Crosshair glow animation */
 @keyframes crosshair-glow {
-  0%, 100% { 
+  0%, 100% {
     filter: drop-shadow(0 0 8px rgba(34, 211, 238, 0.6)) drop-shadow(0 0 16px rgba(168, 85, 247, 0.4));
   }
-  50% { 
+  50% {
     filter: drop-shadow(0 0 12px rgba(34, 211, 238, 0.8)) drop-shadow(0 0 24px rgba(168, 85, 247, 0.6));
   }
 }
@@ -194,15 +195,42 @@ body {
   50% { opacity: 0.3; }
 }
 
-/* Hide cursor on mobile and for reduced motion */
-@media (max-width: 768px) {
+/*
+  ==========================================
+  Mobile and Accessibility Optimizations
+  ==========================================
+*/
+
+@media (max-width: 768px), (prefers-reduced-motion: reduce) {
+  /* Hide custom cursor on smaller screens and for users who prefer no motion */
   * {
     cursor: auto !important;
   }
-}
-
-@media (prefers-reduced-motion: reduce) {
+  
+  /* Disable all animations and transitions to improve performance and accessibility */
   * {
-    cursor: auto !important;
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  /* Reset transform properties to prevent unwanted scaling or rotation on hover/effects */
+  .hover\\:scale-105:hover, .hover\\:rotate-1:hover {
+    transform: none !important;
+  }
+
+  /* Remove backdrop-filter as it's a major performance drain on mobile GPUs */
+  .glass, .dark .glass {
+    backdrop-filter: none !important;
+  }
+  
+  /* Remove other expensive effects like box-shadow from the glow class */
+  .glow, .dark .glow, .crosshair-container {
+    box-shadow: none !important;
+    filter: none !important;
+  }
+  
+  /* Add specific overrides to ensure transitions don't re-apply from other classes */
+  .btn-primary, .btn-secondary, .cert-card, .project-card {
+    transition: all 0.2s ease-in-out;
   }
 }
