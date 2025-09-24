@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import * as THREE from "three";
 import { useTheme } from "../contexts/ThemeContext";
+import { useMediaQuery } from "react-responsive";
 
 const Hero: React.FC = () => {
   const { isDark } = useTheme();
@@ -20,6 +21,7 @@ const Hero: React.FC = () => {
   const [isHovering, setIsHovering] = useState(false);
   const targetRotation = useRef({ x: 0, y: 0 });
   const currentRotation = useRef({ x: 0, y: 0 });
+  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -699,7 +701,7 @@ const Hero: React.FC = () => {
         isDark ? "bg-black" : "bg-white"
       }`}
     >
-      {/* 3D Canvas Background */}
+      {/* 3D Canvas Background (Desktop Only) */}
       <canvas
         ref={canvasRef}
         className="absolute inset-0 z-0"
@@ -707,30 +709,32 @@ const Hero: React.FC = () => {
           background: isDark
             ? "radial-gradient(ellipse at center, #0a0a1f 0%, #000000 50%, #000000 100%)"
             : "radial-gradient(ellipse at center, #f0f4ff 0%, #ffffff 50%, #e6edff 100%)",
-          opacity: isDark ? 1 : 0.85, // Less reduction in opacity
+          opacity: isDark ? 1 : 0.85,
         }}
       />
 
-      {/* Animated gradient overlay */}
-      <motion.div
-        className="absolute inset-0 z-5"
-        animate={{
-          background: isDark
-            ? [
-                "radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 50%)",
-                "radial-gradient(circle at 80% 50%, rgba(168, 85, 247, 0.15) 0%, transparent 50%)",
-                "radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 50%)",
-              ]
-            : [
-                "radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.05) 0%, transparent 50%)",
-                "radial-gradient(circle at 80% 50%, rgba(168, 85, 247, 0.05) 0%, transparent 50%)",
-                "radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.05) 0%, transparent 50%)",
-              ],
-        }}
-        transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-      />
+      {/* Animated gradient overlay (Desktop Only) */}
+      {!isMobile && (
+        <motion.div
+          className="absolute inset-0 z-5"
+          animate={{
+            background: isDark
+              ? [
+                  "radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 50%)",
+                  "radial-gradient(circle at 80% 50%, rgba(168, 85, 247, 0.15) 0%, transparent 50%)",
+                  "radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 50%)",
+                ]
+              : [
+                  "radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.05) 0%, transparent 50%)",
+                  "radial-gradient(circle at 80% 50%, rgba(168, 85, 247, 0.05) 0%, transparent 50%)",
+                  "radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.05) 0%, transparent 50%)",
+                ],
+          }}
+          transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+        />
+      )}
 
-      {/* Light overlay for text visibility - much lighter */}
+      {/* Light overlay for text visibility */}
       {!isDark && <div className="absolute inset-0 z-10 bg-white/10" />}
 
       <div className="container mx-auto px-6 py-6 z-20 relative mt-8">
@@ -746,7 +750,7 @@ const Hero: React.FC = () => {
             className="flex justify-center gap-4 mb-8"
           >
             <motion.div
-              whileHover={{ scale: 1.1, rotate: 5 }}
+              whileHover={!isMobile ? { scale: 1.1, rotate: 5 } : {}}
               className={`px-4 py-2 rounded-full backdrop-blur-md flex items-center gap-2 ${
                 isDark
                   ? "bg-white/5 border border-white/10 text-white/70"
@@ -757,7 +761,7 @@ const Hero: React.FC = () => {
               <span className="text-xs font-mono">DEVELOPER</span>
             </motion.div>
             <motion.div
-              whileHover={{ scale: 1.1, rotate: -5 }}
+              whileHover={!isMobile ? { scale: 1.1, rotate: -5 } : {}}
               className={`px-4 py-2 rounded-full backdrop-blur-md flex items-center gap-2 ${
                 isDark
                   ? "bg-white/5 border border-white/10 text-white/70"
@@ -768,7 +772,7 @@ const Hero: React.FC = () => {
               <span className="text-xs font-mono">DESIGNER</span>
             </motion.div>
             <motion.div
-              whileHover={{ scale: 1.1, rotate: 5 }}
+              whileHover={!isMobile ? { scale: 1.1, rotate: 5 } : {}}
               className={`px-4 py-2 rounded-full backdrop-blur-md flex items-center gap-2 ${
                 isDark
                   ? "bg-white/5 border border-white/10 text-white/70"
@@ -780,12 +784,12 @@ const Hero: React.FC = () => {
             </motion.div>
           </motion.div>
 
-          {/* Animated Name with 3D effect */}
+          {/* Animated Name */}
           <motion.div
             variants={itemVariants}
             className="mb-8 perspective-1000"
-            onMouseEnter={() => setIsHovering(true)}
-            onMouseLeave={() => setIsHovering(false)}
+            onMouseEnter={() => !isMobile && setIsHovering(true)}
+            onMouseLeave={() => !isMobile && setIsHovering(false)}
           >
             <div className="flex flex-wrap justify-center items-center gap-1 md:gap-2 mb-2">
               {name.split("").map((letter, index) => (
@@ -793,11 +797,15 @@ const Hero: React.FC = () => {
                   key={index}
                   variants={letterVariants}
                   custom={index}
-                  whileHover={{
-                    scale: 1.2,
-                    rotateY: 180,
-                    color: isDark ? "#60a5fa" : "#3b82f6",
-                  }}
+                  whileHover={
+                    !isMobile
+                      ? {
+                          scale: 1.2,
+                          rotateY: 180,
+                          color: isDark ? "#60a5fa" : "#3b82f6",
+                        }
+                      : {}
+                  }
                   className={`inline-block text-5xl md:text-7xl lg:text-8xl font-thin tracking-wider cursor-default select-none ${
                     letter === " " ? "w-4 md:w-8" : ""
                   }`}
@@ -805,7 +813,9 @@ const Hero: React.FC = () => {
                     color: isDark
                       ? "rgba(255, 255, 255, 0.9)"
                       : "rgba(0, 0, 0, 0.9)",
-                    textShadow: isDark
+                    textShadow: isMobile
+                      ? "none"
+                      : isDark
                       ? "0 0 40px rgba(59, 130, 246, 0.5), 0 0 80px rgba(59, 130, 246, 0.3)"
                       : "0 2px 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.4)",
                     transform: isHovering
@@ -822,8 +832,6 @@ const Hero: React.FC = () => {
             </div>
           </motion.div>
 
-          {/* Animated location with pulse */}
-
           {/* Animated Role Description */}
           <motion.div
             variants={itemVariants}
@@ -832,10 +840,9 @@ const Hero: React.FC = () => {
             } mb-12 font-light tracking-wide`}
           >
             <motion.span
-              animate={{
-                opacity: [1, 0.5, 1],
-                scale: [1, 1.02, 1],
-              }}
+              animate={
+                !isMobile ? { opacity: [1, 0.5, 1], scale: [1, 1.02, 1] } : {}
+              }
               transition={{ duration: 3, repeat: Infinity }}
               className="inline-block bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent"
             >
@@ -849,10 +856,9 @@ const Hero: React.FC = () => {
               @
             </span>
             <motion.span
-              animate={{
-                opacity: [0.5, 1, 0.5],
-                scale: [1, 1.02, 1],
-              }}
+              animate={
+                !isMobile ? { opacity: [0.5, 1, 0.5], scale: [1, 1.02, 1] } : {}
+              }
               transition={{ duration: 3, repeat: Infinity, delay: 1.5 }}
               className="inline-block bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent"
             >
@@ -866,12 +872,18 @@ const Hero: React.FC = () => {
             className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6 mb-16"
           >
             <motion.button
-              whileHover={{
-                scale: 1.05,
-                boxShadow: `0 0 40px ${
-                  isDark ? "rgba(59, 130, 246, 0.4)" : "rgba(59, 130, 246, 0.3)"
-                }`,
-              }}
+              whileHover={
+                !isMobile
+                  ? {
+                      scale: 1.05,
+                      boxShadow: `0 0 40px ${
+                        isDark
+                          ? "rgba(59, 130, 246, 0.4)"
+                          : "rgba(59, 130, 246, 0.3)"
+                      }`,
+                    }
+                  : {}
+              }
               whileTap={{ scale: 0.95 }}
               onClick={() =>
                 document
@@ -887,22 +899,29 @@ const Hero: React.FC = () => {
               <span className="relative z-10 flex items-center gap-2 text-sm tracking-wider font-light">
                 EXPLORE WORK
                 <motion.span
-                  animate={{ x: [0, 5, 0] }}
+                  animate={!isMobile ? { x: [0, 5, 0] } : {}}
                   transition={{ duration: 1.5, repeat: Infinity }}
                 >
                   →
                 </motion.span>
               </span>
-              <motion.div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
+              {!isMobile && (
+                <motion.div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
+              )}
             </motion.button>
-
             <motion.button
-              whileHover={{
-                scale: 1.05,
-                boxShadow: `0 0 40px ${
-                  isDark ? "rgba(168, 85, 247, 0.4)" : "rgba(168, 85, 247, 0.3)"
-                }`,
-              }}
+              whileHover={
+                !isMobile
+                  ? {
+                      scale: 1.05,
+                      boxShadow: `0 0 40px ${
+                        isDark
+                          ? "rgba(168, 85, 247, 0.4)"
+                          : "rgba(168, 85, 247, 0.3)"
+                      }`,
+                    }
+                  : {}
+              }
               whileTap={{ scale: 0.95 }}
               onClick={() => {
                 window.open(
@@ -950,11 +969,15 @@ const Hero: React.FC = () => {
             ].map(({ icon: Icon, href, label, color }) => (
               <motion.a
                 key={label}
-                whileHover={{
-                  scale: 1.2,
-                  y: -5,
-                  rotate: 360,
-                }}
+                whileHover={
+                  !isMobile
+                    ? {
+                        scale: 1.2,
+                        y: -5,
+                        rotate: 360,
+                      }
+                    : {}
+                }
                 whileTap={{ scale: 0.9 }}
                 href={href}
                 target="_blank"
@@ -967,18 +990,20 @@ const Hero: React.FC = () => {
                 aria-label={label}
               >
                 <Icon size={20} />
-                <motion.div
-                  className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-30 transition-opacity duration-300"
-                  style={{ backgroundColor: color }}
-                />
+                {!isMobile && (
+                  <motion.div
+                    className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-30 transition-opacity duration-300"
+                    style={{ backgroundColor: color }}
+                  />
+                )}
               </motion.a>
             ))}
           </motion.div>
 
-          {/* Floating side text */}
+          {/* Floating side text (Desktop Only) */}
           <motion.div
             variants={itemVariants}
-            animate={{ opacity: [0.3, 0.6, 0.3] }}
+            animate={!isMobile ? { opacity: [0.3, 0.6, 0.3] } : {}}
             transition={{ duration: 4, repeat: Infinity }}
             className={`absolute bottom-20 left-6 ${
               isDark ? "text-gray-600" : "text-gray-400"
@@ -986,10 +1011,9 @@ const Hero: React.FC = () => {
           >
             CRAFTING DIGITAL EXPERIENCES
           </motion.div>
-
           <motion.div
             variants={itemVariants}
-            animate={{ opacity: [0.3, 0.6, 0.3] }}
+            animate={!isMobile ? { opacity: [0.3, 0.6, 0.3] } : {}}
             transition={{ duration: 4, repeat: Infinity, delay: 2 }}
             className={`absolute bottom-20 right-6 ${
               isDark ? "text-gray-600" : "text-gray-400"
@@ -1002,7 +1026,7 @@ const Hero: React.FC = () => {
 
       {/* Enhanced scroll indicator */}
       <motion.div
-        animate={{ y: [0, 15, 0] }}
+        animate={!isMobile ? { y: [0, 15, 0] } : {}}
         transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20"
       >
@@ -1017,7 +1041,7 @@ const Hero: React.FC = () => {
           }
         >
           <motion.div
-            animate={{ y: [0, 16, 0] }}
+            animate={!isMobile ? { y: [0, 16, 0] } : {}}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             className={`w-1.5 h-4 ${
               isDark

@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { useTheme } from "../contexts/ThemeContext";
+import { useMediaQuery } from "react-responsive";
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { isDark, toggleTheme } = useTheme();
+  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -48,7 +50,7 @@ const Header: React.FC = () => {
         <div className="flex items-center justify-between">
           <motion.div
             onClick={() => scrollToSection("#home")}
-            whileHover={{ scale: 1.05 }}
+            whileHover={!isMobile ? { scale: 1.05 } : {}}
             className="text-2xl font-bold gradient-text"
           >
             Sankalp Racchewar
@@ -59,8 +61,8 @@ const Header: React.FC = () => {
             {navItems.map((item) => (
               <motion.button
                 key={item.name}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={!isMobile ? { scale: 1.1 } : {}}
+                whileTap={!isMobile ? { scale: 0.95 } : {}}
                 onClick={() => scrollToSection(item.href)}
                 className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-300 font-medium"
               >
@@ -68,8 +70,8 @@ const Header: React.FC = () => {
               </motion.button>
             ))}
             <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={!isMobile ? { scale: 1.1 } : {}}
+              whileTap={!isMobile ? { scale: 0.95 } : {}}
               onClick={toggleTheme}
               className="p-2 rounded-lg bg-gray-200 dark:bg-dark-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-dark-600 transition-colors duration-300"
             >
@@ -111,7 +113,7 @@ const Header: React.FC = () => {
             {navItems.map((item) => (
               <motion.button
                 key={item.name}
-                whileHover={{ x: 10 }}
+                whileHover={!isMobile ? { x: 10 } : {}}
                 onClick={() => scrollToSection(item.href)}
                 className="block w-full text-left text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-300 font-medium"
               >

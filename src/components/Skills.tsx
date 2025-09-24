@@ -1,3 +1,4 @@
+import React from "react";
 import { motion } from "framer-motion";
 
 const Skills = () => {
@@ -46,9 +47,19 @@ const Skills = () => {
     },
   ];
 
+  // Variants are defined outside the component for performance
   const staggerContainer = {
     animate: {
       transition: { staggerChildren: 0.1, delayChildren: 0.1 },
+    },
+  };
+
+  const skillCardVariants = {
+    initial: { opacity: 0, y: 20 },
+    animate: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.4, ease: "easeOut" },
     },
   };
 
@@ -58,15 +69,15 @@ const Skills = () => {
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
-          className="text-center mb-16"
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          className="text-center mb-12 md:mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6 gradient-text">
             Skills & Expertise
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-primary-500 to-purple-600 mx-auto mb-8"></div>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          <p className="text-sm md:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             A full-stack MERN developer skilled in frontend, backend, testing,
             DevOps, and cloud deployment — delivering scalable, reliable, and
             user-focused applications.
@@ -79,29 +90,22 @@ const Skills = () => {
           initial="initial"
           whileInView="animate"
           viewport={{ once: true, margin: "-10%" }}
-          className="grid md:grid-cols-2 xl:grid-cols-4 gap-8 justify-items-center"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8 justify-items-center"
         >
           {skillCategories.map((category, categoryIndex) => (
             <motion.div
               key={category.title}
-              variants={{
-                initial: { opacity: 0, y: 20 },
-                animate: {
-                  opacity: 1,
-                  y: 0,
-                  transition: { duration: 0.4, ease: "easeOut" },
-                },
-              }}
-              className="skill-card bg-gray-50 dark:bg-dark-800 p-8 rounded-2xl shadow-lg border border-gray-100 dark:border-dark-700 w-full max-w-xs"
+              variants={skillCardVariants}
+              className="skill-card bg-gray-50 dark:bg-dark-800 p-6 md:p-8 rounded-2xl shadow-lg border border-gray-100 dark:border-dark-700 w-full max-w-xs"
             >
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-8 text-center pb-4 border-b border-gray-200 dark:border-dark-600">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6 text-center pb-4 border-b border-gray-200 dark:border-dark-600">
                 {category.title}
               </h3>
 
-              <div className="space-y-6">
+              <div className="space-y-4 md:space-y-6">
                 {category.skills.map((skill, skillIndex) => (
                   <div key={skill.name} className="skill-item">
-                    <div className="flex justify-between items-center mb-2">
+                    <div className="flex justify-between items-center mb-1.5">
                       <span className="text-gray-700 dark:text-gray-300 font-medium text-sm">
                         {skill.name}
                       </span>
@@ -134,14 +138,14 @@ const Skills = () => {
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-16 text-center"
+          className="mt-12 md:mt-16 text-center"
         >
-          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">
+          <h3 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-6">
             Highlighted Expertise
           </h3>
-          <div className="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
+          <div className="flex flex-wrap justify-center gap-2 md:gap-4 max-w-4xl mx-auto">
             {[
               "MERN Stack Applications",
               "Performance Optimization",
@@ -155,7 +159,7 @@ const Skills = () => {
             ].map((skill, index) => (
               <span
                 key={skill}
-                className="px-4 py-2 bg-gradient-to-r from-primary-100 to-purple-100 dark:from-primary-900/30 dark:to-purple-900/30 text-primary-700 dark:text-primary-300 rounded-full text-sm font-medium border border-primary-200 dark:border-primary-700"
+                className="px-3 py-1 md:px-4 md:py-2 bg-gradient-to-r from-primary-100 to-purple-100 dark:from-primary-900/30 dark:to-purple-900/30 text-primary-700 dark:text-primary-300 rounded-full text-xs md:text-sm font-medium border border-primary-200 dark:border-primary-700"
                 style={{ animationDelay: `${index * 0.05}s` }}
               >
                 {skill}
