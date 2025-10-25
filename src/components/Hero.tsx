@@ -862,7 +862,7 @@ const Hero: React.FC = () => {
               transition={{ duration: 3, repeat: Infinity, delay: 1.5 }}
               className="inline-block bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent"
             >
-              Chainworks
+              Nimbja Security Sollutions
             </motion.span>
           </motion.div>
 

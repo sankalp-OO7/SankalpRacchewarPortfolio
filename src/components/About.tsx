@@ -109,10 +109,10 @@ const About = () => {
             className="space-y-6"
           >
             <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">
-              MERN Stack Developer | Scalable & Impactful Solutions
+              Full Stack Developer | Scalable & Impactful Solutions
             </h3>
             <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
-              I am a results-driven MERN Stack Developer with 3.2+ years of
+              I am a results-driven Full Stack Developer with 3.2+ years of
               experience in building responsive, high-performance, and
               production-ready applications. Skilled in React.js, Node.js,
               MongoDB, and modern UI frameworks, I specialize in creating

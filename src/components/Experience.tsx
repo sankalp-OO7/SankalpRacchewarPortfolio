@@ -30,8 +30,8 @@ const Experience: React.FC = () => {
   const experiences = [
     {
       title: "B.Sc. Computer Science",
-      company: "MIT College, Pune",
-      location: "Pune",
+      company: "MIT College, Basmath",
+      location: "Hingoli",
       period: "2019 – 2022",
       description:
         "Built a solid foundation in computer science with strong academic projects. Learned the basics of programming, databases, and software development lifecycle.",
@@ -41,31 +41,32 @@ const Experience: React.FC = () => {
       highlight: "Graduation",
     },
     {
-      title: "MCA + Junior Developer",
-      company: "PES Modern College & Chainworks",
+      title: "MCA + Fullstack Developer (Trainee)", // New role
+      company: "PES Modern College & Nimbja Security Solution",
       location: "Pune",
-      period: "2022 – 2024",
+      period: "2022 – March 2023",
       description:
-        "Pursued MCA while working as a Junior Developer at Chainworks. Gained practical exposure to MERN stack projects, enhancing academic learning with real-world applications.",
+        "Pursued MCA while working as a Trainee Developer at Nimbja Security Solution. Gained practical exposure to Full stack projects, enhancing academic learning with real-world applications. Briefly utilized Golang for specific microservices.",
       technologies: [
-        "Java",
-        "Spring Boot",
         "React.js",
         "Node.js",
+        "Express.js",
         "MongoDB",
         "REST APIs",
+        "PostgreSQL",
+        "Go (Golang)", // Included but deemphasized
       ],
       icon: <Star className="w-6 h-6" />,
       type: "education",
-      highlight: "Masters + First Job",
+      highlight: "Masters + First Role",
     },
     {
-      title: "Associate MERN Stack Developer",
-      company: "Chainworks Digital",
+      title: "Associate Fullstack Developer", // New role
+      company: "Nimbja Security Solution",
       location: "Pune",
-      period: "2024",
+      period: "March 2023 – 2024",
       description:
-        "Promoted to Associate Developer, working on full-stack product development. Delivered reusable React components, integrated APIs, and optimized backend services.",
+        "Started full-time as an Associate Developer, focusing on full-stack product development using the Full stack. Delivered reusable React components, integrated APIs, and optimized backend services.",
       technologies: [
         "React.js",
         "Redux",
@@ -79,12 +80,12 @@ const Experience: React.FC = () => {
       highlight: "Full-Time Role",
     },
     {
-      title: "MERN Stack Developer",
-      company: "Chainworks Digital",
+      title: "Fullstack Developer", // New role
+      company: "Nimbja Security Solution",
       location: "Pune",
       period: "2024 – 2025",
       description:
-        "Contributed to large-scale projects including AI-driven Police Management System and Muddemal Case Management. Implemented scalable backend APIs, cloud deployment, and CI/CD pipelines.",
+        "Promoted to Fullstack Developer, contributing to large-scale projects including an AI-driven Police Management System. Implemented scalable **MERN** backend APIs, cloud deployment, and CI/CD pipelines. Used Go for limited performance-critical tasks.",
       technologies: [
         "Node.js",
         "MongoDB",
@@ -93,18 +94,19 @@ const Experience: React.FC = () => {
         "Jest",
         "Payment Gateway Integration",
         "Firebase",
+        "Go (Golang)", // Included but deemphasized
       ],
       icon: <Code2 className="w-6 h-6" />,
       type: "job",
       highlight: "Major Projects",
     },
     {
-      title: "Current Role – Project Development",
-      company: "Chainworks Digital",
+      title: "Current Role – Fullstack Development", // New role
+      company: "Nimbja Security Solution",
       location: "Pune",
       period: "2025 – Present",
       description:
-        "Currently leading development on AI-powered modules and enterprise-grade web applications. Building secure, scalable MERN apps with cloud infrastructure and advanced testing.",
+        "Currently leading development on AI-powered modules and enterprise-grade web applications. Building secure, scalable MERN apps with cloud infrastructure and advanced testing. Full stack  remains the core focus.",
       technologies: [
         "React.js",
         "Node.js",

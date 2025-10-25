@@ -114,8 +114,7 @@ const Projects: React.FC = () => {
     {
       id: 9,
       title: "Company Websites",
-      description:
-        "Built stunning websites for the parent company, Chainworks, and Gyansopaan using Framer-motion.  ",
+      description: "Built stunning websites  Framer-motion.  ",
       technologies: ["Framer-motion", "React.js"],
       category: "frontend",
       github: "https://github.com/Sankalp-Racchewar",
