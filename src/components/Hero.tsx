@@ -925,7 +925,7 @@ const Hero: React.FC = () => {
               whileTap={{ scale: 0.95 }}
               onClick={() => {
                 window.open(
-                  "https://docs.google.com/document/d/e/2PACX-1vS_Yi7fnhhari1vyFacM0uxb7tMvoeB4h9A21owhgzmJd891Wxi1G27mxZz9t7nMzdMHeyf_tJMknn3/pub",
+                  "https://drive.google.com/file/d/1mIX_UD0s45SimEchAU12lZGLCUq1LClV/view?usp=sharing",
                   "_blank"
                 );
               }}
