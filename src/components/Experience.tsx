@@ -31,94 +31,110 @@ const Experience: React.FC = () => {
     {
       title: "B.Sc. Computer Science",
       company: "MIT College, Basmath",
-      location: "Hingoli",
+      location: "Vasmath, Maharashtra",
       period: "2019 – 2022",
       description:
-        "Built a solid foundation in computer science with strong academic projects. Learned the basics of programming, databases, and software development lifecycle.",
-      technologies: ["C", "C++", "Java", "SQL", "HTML/CSS", "JavaScript"],
+        "Built a solid foundation in computer science core principles. Developed initial engineering methodologies covering structured programming, data structures, relational databases, and the software development lifecycle.",
+      technologies: ["C", "C++", "Java", "SQL", "HTML5/CSS3", "JavaScript"],
       icon: <GraduationCap className="w-6 h-6" />,
       type: "education",
-      highlight: "Graduation",
+      highlight: "UG Graduation (2022)",
     },
     {
-      title: "MCA + Fullstack Developer (Trainee)", // New role
-      company: "PES Modern College & Nimbja Security Solution",
-      location: "Pune",
-      period: "2022 – March 2023",
+      title: "Web Development Intern (MCA Path)",
+      company: "Nimbja Security Solution Pvt. Ltd. & PES Modern College",
+      location: "Pune, Maharashtra",
+      period: "Dec 2022 – May 2023",
       description:
-        "Pursued MCA while working as a Trainee Developer at Nimbja Security Solution. Gained practical exposure to Full stack projects, enhancing academic learning with real-world applications. Briefly utilized Golang for specific microservices.",
+        "Initiated professional engineering track with an immersive technical internship while pursuing postgraduate MCA studies. Maintained hands-on involvement building scalable full-stack applications and optimizing baseline codebase components.",
       technologies: [
         "React.js",
         "Node.js",
         "Express.js",
         "MongoDB",
-        "REST APIs",
-        "PostgreSQL",
-        "Go (Golang)", // Included but deemphasized
+        "RESTful APIs",
+        "JavaScript ES6+",
       ],
       icon: <Star className="w-6 h-6" />,
       type: "education",
-      highlight: "Masters + First Role",
+      highlight: "Internship & PG Track",
     },
     {
-      title: "Associate Fullstack Developer", // New role
-      company: "Nimbja Security Solution",
-      location: "Pune",
-      period: "March 2023 – 2024",
+      title: "Associate MERN Developer",
+      company: "Nimbja Security Solution Pvt. Ltd.",
+      location: "Pune, Maharashtra",
+      period: "Jun 2023 – Mar 2024",
       description:
-        "Started full-time as an Associate Developer, focusing on full-stack product development using the Full stack. Delivered reusable React components, integrated APIs, and optimized backend services.",
+        "Transitioned into standard paid tenure managing robust product development workflows. Engineered highly modular UI components, decoupled state mechanisms, integrated protected API endpoints, and structured query optimization tasks.",
       technologies: [
         "React.js",
-        "Redux",
+        "Redux Toolkit",
         "TypeScript",
         "Express.js",
-        "MySQL",
-        "Docker",
+        "Mongoose ODM",
+        "Tailwind CSS",
       ],
       icon: <Briefcase className="w-6 h-6" />,
       type: "job",
-      highlight: "Full-Time Role",
+      highlight: "Professional Transition",
     },
     {
-      title: "Fullstack Developer", // New role
-      company: "Nimbja Security Solution",
-      location: "Pune",
-      period: "2024 – 2025",
+      title: "Junior MERN Stack Developer",
+      company: "Nimbja Security Solution Pvt. Ltd.",
+      location: "Pune, Maharashtra",
+      period: "Apr 2024 – Mar 2025",
       description:
-        "Promoted to Fullstack Developer, contributing to large-scale projects including an AI-driven Police Management System. Implemented scalable **MERN** backend APIs, cloud deployment, and CI/CD pipelines. Used Go for limited performance-critical tasks.",
-      technologies: [
-        "Node.js",
-        "MongoDB",
-        "AWS",
-        "CI/CD",
-        "Jest",
-        "Payment Gateway Integration",
-        "Firebase",
-        "Go (Golang)", // Included but deemphasized
-      ],
-      icon: <Code2 className="w-6 h-6" />,
-      type: "job",
-      highlight: "Major Projects",
-    },
-    {
-      title: "Current Role – Fullstack Development", // New role
-      company: "Nimbja Security Solution",
-      location: "Pune",
-      period: "2025 – Present",
-      description:
-        "Currently leading development on AI-powered modules and enterprise-grade web applications. Building secure, scalable MERN apps with cloud infrastructure and advanced testing. Full stack  remains the core focus.",
+        "Promoted to drive advanced architectural requirements. Completed Master of Computer Applications (MCA) graduation in 2024. Significantly upgraded enterprise systems, introducing end-to-end multi-tenant workflows and critical data security modules.",
       technologies: [
         "React.js",
         "Node.js",
+        "MongoDB",
+        "JWT Auth",
+        "Jest",
+        "React Testing Library",
+      ],
+      icon: <Code2 className="w-6 h-6" />,
+      type: "job",
+      highlight: "MCA Complete (2024)",
+    },
+    {
+      title: "MERN Stack Developer (Enterprise Systems)",
+      company: "Nimbja Security Solution Pvt. Ltd.",
+      location: "Pune, Maharashtra",
+      period: "Apr 2025 – Mar 2026",
+      description:
+        "Led critical frontend architecture over the AI-Smart Police Station GovTech initiative. Reduced system render latencies by implementing virtualization strategies, real-time WebSocket communication channels, and strict performance guardrails.",
+      technologies: [
+        "React.js",
+        "Next.js",
+        "WebSockets",
+        "AWS (S3/EC2)",
+        "GitHub Actions",
+        "Material UI",
+      ],
+      icon: <Zap className="w-6 h-6" />,
+      type: "job",
+      highlight: "GovTech Architecture",
+    },
+    {
+      title: "MERN Stack Developer (Current)",
+      company: "Nimbja Security Solution Pvt. Ltd.",
+      location: "Pune, Maharashtra",
+      period: "Apr 2026 – Present",
+      description:
+        "Spearheading specialized development on secure, cloud-native modules and high-velocity systems. Driving automated verification structures, serverless infrastructure adjustments, and sophisticated agentic AI toolkit workflows.",
+      technologies: [
+        "React.js",
+        "Node.js",
+        "TypeScript",
         "GraphQL",
-        "Tailwind CSS",
-        "AWS",
-        "CI/CD",
-        "AI Integrations",
+        "AWS Lambda",
+        "Docker",
+        "Cursor / AI Workflows",
       ],
       icon: <Zap className="w-6 h-6" />,
       type: "current",
-      highlight: "Present",
+      highlight: "Present Horizon",
     },
   ];
 
@@ -145,8 +161,7 @@ const Experience: React.FC = () => {
             data-aos-delay="200"
             className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed"
           >
-            From academics to professional development and advanced AI-powered
-            projects
+            From strong academic roots to building enterprise-grade, cloud-scaled engineering applications
           </p>
         </div>
 
